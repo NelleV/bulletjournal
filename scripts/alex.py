@@ -1,4 +1,5 @@
-def alex_specific_stuff(day, date, month, year, calendar_string):
+# specify daily-specific formatting stuff
+def alex_daily_specific(day, date, month, year, calendar_string):
     """
     Alex's specific stuff
     """
@@ -49,3 +50,9 @@ def alex_specific_stuff(day, date, month, year, calendar_string):
 
     # give us back our string
     return calendar_string
+
+
+# any birds-eye-specific stuff would go here
+def alex_birdseye_specific():
+
+    print("This is where Alex's specific stuff would go!")

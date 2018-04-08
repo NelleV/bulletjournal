@@ -1,8 +1,7 @@
-
-
-def nelle_specific_stuff(day, date, month, year, calendar_string):
+# daily-specific formatting
+def nelle_daily_specific(day, date, month, year, calendar_string):
     """
-    Nelle's specific stuff
+    Nelle's specific daily stuff
     """
     if day == "Thursday":
         calendar_string = calendar_string + "- BIDS lunch: 12.30pm to 2pm\n"
@@ -17,3 +16,9 @@ def nelle_specific_stuff(day, date, month, year, calendar_string):
 
     # give us back our string
     return calendar_string
+
+
+# any birds-eye-specific stuff would go here
+def nelle_birdseye_specific():
+
+    print("This is where Nelle's specific stuff would go!")

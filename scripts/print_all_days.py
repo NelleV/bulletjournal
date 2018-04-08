@@ -7,8 +7,8 @@ from en_calendar import en_months, en_days
 from fr_calendar import fr_months, fr_days
 
 # import specific people's info
-from nelle import nelle_specific_stuff
-from alex import alex_specific_stuff
+from nelle import nelle_daily_specific
+from alex import alex_daily_specific
 
 # initialize the parser
 parser = argparse.ArgumentParser()
@@ -71,10 +71,10 @@ for dates in all_days:
 
         # Here, let's add weekly specific items
         if whom == "nelle":
-            cal_string = nelle_specific_stuff(day, date, month, year,
+            cal_string = nelle_daily_specific(day, date, month, year,
                                               cal_string)
         elif whom == "alex":
-            cal_string = alex_specific_stuff(day, date, month, year,
+            cal_string = alex_daily_specific(day, date, month, year,
                                              cal_string)
         cal_string = cal_string + '\n'
 

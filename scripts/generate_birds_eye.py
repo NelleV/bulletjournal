@@ -6,6 +6,8 @@ import argparse
 # import custom packages
 from en_calendar import en_months, en_days
 from fr_calendar import fr_months, fr_days
+from nelle import nelle_birdseye_specific
+from alex import alex_birdseye_specific
 
 # add arguments
 parser = argparse.ArgumentParser()
