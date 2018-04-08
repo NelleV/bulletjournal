@@ -1,5 +1,10 @@
+# import standard libraries
 import calendar
 import argparse
+
+# import general packages
+
+# import specific people's info
 from nelle import nelle_specific_stuff
 from alex import alex_specific_stuff
 
@@ -31,61 +36,19 @@ if whom is not None and whom not in ["alex", "nelle"]:
 cal = calendar.TextCalendar()
 all_days = cal.monthdayscalendar(year, month)
 
-# name the days of the week
-en_days = ["Monday",
-           "Tuesday",
-           "Wednesday",
-           "Thursday",
-           "Friday",
-           "Saturday",
-           "Sunday"]
-fr_days = ["lundi",
-           "mardi",
-           "mercredi",
-           "jeudi",
-           "vendredi",
-           "samedi",
-           "dimanche"]
-
-# provide numbers for months of the year
-en_months = {1: "January",
-             2: "February",
-             3: "March",
-             4: "April",
-             5: "May",
-             6: "June",
-             7: "July",
-             8: "August",
-             9: "September",
-             10: "October",
-             11: "November",
-             12: "December"}
-fr_months = {1: "janvier",
-             2: "février",
-             3: "mars",
-             4: "avril",
-             5: "mai",
-             6: "juin",
-             7: "juillet",
-             8: "août",
-             9: "septembre",
-             10: "octobre",
-             11: "novembre",
-             12: "décembre"}
-
 # initialize the calendar string
 cal_string = ""
 
+# account for language preference
+if language == "fr":
+        days = fr_days
+        months = fr_months
+else:
+    days = en_days
+    months = en_months
+
 # cycle through each day
 for dates in all_days:
-
-    # account for language preference
-    if language == "fr":
-            days = fr_days
-            months = fr_months
-    else:
-        days = en_days
-        months = en_months
 
     # print the calendar
     for day, date in zip(days, dates):

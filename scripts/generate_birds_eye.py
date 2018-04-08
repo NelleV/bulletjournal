@@ -1,39 +1,46 @@
+# import standard packages
 import calendar
 import os
 import argparse
 
+# import custom packages
+from en_calendar import en_months, en_days
+from fr_calendar import fr_months, fr_days
+
+# add arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("month", type=int)
 parser.add_argument("--year", default=2018)
+parser.add_argument("--markdown", default=False, action="store_true")
+parser.add_argument("--whom", default=None)
+parser.add_argument("--language", default="en")
+parser.add_argument("--save", default=None)  # path name to save
 
+# parse arguments
 args = parser.parse_args()
 year = args.year
 month = args.month
+markdown = args.markdown
+whom = args.whom
+language = args.language
+save = args.save
 
+# initialize the calendar
 cal = calendar.TextCalendar()
 all_days = cal.monthdayscalendar(year, month)
-months = {1: "January",
-          2: "February",
-          3: "March",
-          4: "April",
-          5: "May",
-          6: "June",
-          7: "July",
-          8: "August",
-          9: "September",
-          10: "October",
-          11: "November",
-          12: "December"}
 
-days = ["Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"]
+# specify days/months by language
+if language == "fr":
+    days = fr_days
+    months = fr_months
+else:
+    days = en_days
+    months = fr_months
 
-string_to_print = "+----+" + 70 * "-" + "+"
+# create table formatting
+if markdown == False:
+    string_to_print = "+----+" + 70 * "-" + "+"
+else:
 
 for dates in all_days:
     for day, date in zip(days, dates):
