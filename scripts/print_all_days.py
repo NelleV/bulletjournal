@@ -106,9 +106,9 @@ for dates in all_days:
 
         # Here, let's add weekly specific items
         if whom == "nelle":
-            nelle_specific_stuff(day, date, month, year, cal_string)
+            cal_string = nelle_specific_stuff(day, date, month, year, cal_string)
         elif whom == "alex":
-            alex_specific_stuff(day, date, month, year, cal_string)
+            cal_string = alex_specific_stuff(day, date, month, year, cal_string)
         cal_string = cal_string + '\n'
 
 # print or save as desired
