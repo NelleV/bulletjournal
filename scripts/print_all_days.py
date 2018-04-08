@@ -70,7 +70,7 @@ fr_months = {1: "janvier",
              12: "décembre"}
 
 # specify language for months and days
-if whom=="nelle":
+if whom == "nelle":
     months = fr_months
     days = fr_days
 else:
