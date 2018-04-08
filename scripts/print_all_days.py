@@ -28,27 +28,54 @@ cal = calendar.TextCalendar()
 all_days = cal.monthdayscalendar(year, month)
 
 # name the days of the week
-days = ["Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"]
+en_days = ["Monday",
+           "Tuesday",
+           "Wednesday",
+           "Thursday",
+           "Friday",
+           "Saturday",
+           "Sunday"]
+fr_days = ["lundi",
+           "mardi",
+           "mercredi",
+           "jeudi",
+           "vendredi",
+           "samedi",
+           "dimanche"]
 
 # provide numbers for months of the year
-months = {1: "January",
-          2: "February",
-          3: "March",
-          4: "April",
-          5: "May",
-          6: "June",
-          7: "July",
-          8: "August",
-          9: "September",
-          10: "October",
-          11: "November",
-          12: "December"}
+en_months = {1: "January",
+             2: "February",
+             3: "March",
+             4: "April",
+             5: "May",
+             6: "June",
+             7: "July",
+             8: "August",
+             9: "September",
+             10: "October",
+             11: "November",
+             12: "December"}
+fr_months = {1: "janvier",
+             2: "février",
+             3: "mars",
+             4: "avril",
+             5: "mai",
+             6: "juin",
+             7: "juillet",
+             8: "août",
+             9: "septembre",
+             10: "octobre",
+             11: "novembre",
+             12: "décembre"}
+
+# specify language for months and days
+if whom=="nelle":
+    months = fr_months
+    days = fr_days
+else:
+    months = en_months
+    days = en_days
 
 # cycle through each day
 for dates in all_days:
