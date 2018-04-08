@@ -44,5 +44,8 @@ def alex_specific_stuff(day, date, month, year, calendar_string):
         calendar_string = calendar_string + '- **Personal**\n'
         calendar_string = calendar_string + "\t- 7pm: BAD scrimmage\n"
 
+    # add a horizontal line between days
+    calendar_string = calendar_string + "***\n"
+
     # give us back our string
     return calendar_string
