@@ -39,7 +39,7 @@ if language == "fr":
     months = fr_months
 else:
     days = en_days
-    months = fr_months
+    months = en_months
 
 # create table formatting
 header_string = " ---- " + 70 * "-" + " "
