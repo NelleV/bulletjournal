@@ -12,6 +12,7 @@ parser.add_argument("--year", default=2018)
 parser.add_argument("--markdown", default=False, action="store_true")
 parser.add_argument("--whom", default=None)
 parser.add_argument("--language", default="en")
+parser.add_argument("--save", default=None)  # path name to save
 args = parser.parse_args()
 
 # add arguments to namespace
@@ -20,6 +21,7 @@ month = args.month
 markdown = args.markdown
 whom = args.whom
 language = args.language
+save = args.save
 
 # yell at us if we don't provide a valid name
 if whom is not None and whom not in ["alex", "nelle"]:
@@ -108,3 +110,10 @@ for dates in all_days:
         elif whom == "alex":
             alex_specific_stuff(day, date, month, year, language, cal_string)
         cal_string = cal_string + '\n'
+
+# print or save as desired
+if save is None:
+    print(cal_string)
+else:
+    with open(save, "w") as calendar_file:
+        calendar_file.write(cal_string)
