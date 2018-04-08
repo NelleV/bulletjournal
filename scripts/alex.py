@@ -1,5 +1,3 @@
-
-
 def alex_specific_stuff(day, date, month, year):
     """
     Alex's specific stuff
