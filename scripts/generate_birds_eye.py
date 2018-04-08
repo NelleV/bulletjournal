@@ -34,6 +34,7 @@ if whom is not None and whom not in ["alex", "nelle"]:
 # initialize the calendar
 cal = calendar.TextCalendar()
 all_days = cal.monthdayscalendar(year, month)
+calendar_string = ""
 
 # specify days/months by language
 if language == "fr":
@@ -53,7 +54,7 @@ for dates in all_days:
             continue
 
         # format the day
-        print(header_string)
+        calendar_string = calendar_string + header_string
         text = " {date} {day}".format(
             **{"day": day[0], "date": date})
         if len(text) == 4:
@@ -61,5 +62,11 @@ for dates in all_days:
         else:
             text = text + " " + 70 * " " + " "
 
-        print(text)
-print(header_string)
+        calendar_string = calendar_string + text
+
+# print or save as desired
+if save is None:
+    print(calendar_string)
+else:
+    with open(save, "w") as calendar_file:
+        calendar_file.write(calendar_string)
