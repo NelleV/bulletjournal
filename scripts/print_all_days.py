@@ -36,3 +36,10 @@ for dates in all_days:
             print(text)
             print("-" * len(text))
         print()
+
+        # Here, let's add weekly specific items
+        if day == "Thursday":
+            print("- BIDS lunch: 12.30pm to 2pm")
+        if day == "Monday":
+            print("- Alex & Nelle meeting: 11.30am to 12.30pm")
+        print()
