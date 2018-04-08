@@ -98,7 +98,7 @@ for dates in all_days:
 
         # print the day header by our preferred format
         if markdown:
-            cal_string = cal_string + "#" + text
+            cal_string = cal_string + "# " + text
         else:
             cal_string = cal_string + text + '\n'
             cal_string = cal_string + "-" * len(text)
@@ -106,9 +106,11 @@ for dates in all_days:
 
         # Here, let's add weekly specific items
         if whom == "nelle":
-            cal_string = nelle_specific_stuff(day, date, month, year, cal_string)
+            cal_string = nelle_specific_stuff(day, date, month, year,
+                                              cal_string)
         elif whom == "alex":
-            cal_string = alex_specific_stuff(day, date, month, year, cal_string)
+            cal_string = alex_specific_stuff(day, date, month, year,
+                                             cal_string)
         cal_string = cal_string + '\n'
 
 # print or save as desired
