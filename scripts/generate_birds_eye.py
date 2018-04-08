@@ -25,6 +25,10 @@ whom = args.whom
 language = args.language
 save = args.save
 
+# yell at us if we don't provide a valid name
+if whom is not None and whom not in ["alex", "nelle"]:
+    raise ValueError("I do not know who that person is")
+
 # initialize the calendar
 cal = calendar.TextCalendar()
 all_days = cal.monthdayscalendar(year, month)
