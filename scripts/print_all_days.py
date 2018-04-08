@@ -2,7 +2,9 @@
 import calendar
 import argparse
 
-# import general packages
+# import custom packages
+from en_calendar import en_months, en_days
+from fr_calendar import fr_months, fr_days
 
 # import specific people's info
 from nelle import nelle_specific_stuff
