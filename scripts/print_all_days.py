@@ -11,6 +11,7 @@ parser.add_argument("month", type=int)
 parser.add_argument("--year", default=2018)
 parser.add_argument("--markdown", default=False, action="store_true")
 parser.add_argument("--whom", default=None)
+parser.add_argument("--language", default="en")
 args = parser.parse_args()
 
 # add arguments to namespace
@@ -18,6 +19,7 @@ year = args.year
 month = args.month
 markdown = args.markdown
 whom = args.whom
+language = args.language
 
 # yell at us if we don't provide a valid name
 if whom is not None and whom not in ["alex", "nelle"]:
@@ -69,16 +71,18 @@ fr_months = {1: "janvier",
              11: "novembre",
              12: "décembre"}
 
-# specify language for months and days
-if whom == "nelle":
-    months = fr_months
-    days = fr_days
-else:
-    months = en_months
-    days = en_days
-
 # cycle through each day
 for dates in all_days:
+
+    # account for language preference
+    if language == "fr":
+            days = fr_days
+            months = fr_months
+    else:
+        days = en_days
+        months = en_months
+
+    # print the calendar
     for day, date in zip(days, dates):
         if date == 0:
             continue
@@ -97,7 +101,7 @@ for dates in all_days:
 
         # Here, let's add weekly specific items
         if whom == "nelle":
-            nelle_specific_stuff(day, date, month, year)
+            nelle_specific_stuff(day, date, month, year, language)
         elif whom == "alex":
-            alex_specific_stuff(day, date, month, year)
+            alex_specific_stuff(day, date, month, year, language)
         print()
