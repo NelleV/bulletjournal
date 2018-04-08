@@ -1,15 +1,23 @@
 import calendar
 import argparse
+from nelle import nelle_specific_stuff
+from alex import alex_specific_stuff
 
 parser = argparse.ArgumentParser()
 parser.add_argument("month", type=int)
 parser.add_argument("--year", default=2018)
 parser.add_argument("--markdown", default=False, action="store_true")
+parser.add_argument("--whom", default=None)
 args = parser.parse_args()
 
 year = args.year
 month = args.month
 markdown = args.markdown
+whom = args.whom
+
+if whom is not None and whom not in ["alex", "nelle"]:
+ 
+    raise ValueError("I do not know who that person is")
 
 cal = calendar.TextCalendar()
 all_days = cal.monthdayscalendar(year, month)
@@ -38,8 +46,8 @@ for dates in all_days:
         print()
 
         # Here, let's add weekly specific items
-        if day == "Thursday":
-            print("- BIDS lunch: 12.30pm to 2pm")
-        if day == "Monday":
-            print("- Alex & Nelle meeting: 11.30am to 12.30pm")
+        if whom == "nelle":
+            nelle_specific_stuff(day, date, month, year)
+        elif whom == "alex":
+            alex_specific_stuff(day, date, month, year)
         print()
