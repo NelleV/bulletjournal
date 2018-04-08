@@ -42,23 +42,22 @@ else:
     months = fr_months
 
 # create table formatting
-if markdown == False:
-    string_to_print = "+----+" + 70 * "-" + "+"
-else:
+header_string = " ---- " + 70 * "-" + " "
 
+# cycle through individual daily entries
 for dates in all_days:
     for day, date in zip(days, dates):
         if date == 0:
             continue
 
         # format the day
-        print(string_to_print)
-        text = "|{date} {day}".format(
+        print(header_string)
+        text = " {date} {day}".format(
             **{"day": day[0], "date": date})
         if len(text) == 4:
-            text = text + " |" + 70 * " " + "|"
+            text = text + " " + 70 * " " + " "
         else:
-            text = text + "|" + 70 * " " + "|"
+            text = text + " " + 70 * " " + " "
 
         print(text)
-print(string_to_print)
+print(header_string)
