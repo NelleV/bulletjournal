@@ -71,6 +71,9 @@ fr_months = {1: "janvier",
              11: "novembre",
              12: "décembre"}
 
+# initialize the calendar string
+cal_string = ""
+
 # cycle through each day
 for dates in all_days:
 
@@ -93,15 +96,15 @@ for dates in all_days:
 
         # print the day header by our preferred format
         if markdown:
-            print("#", text)
+            cal_string = cal_string + "#" + text
         else:
-            print(text)
-            print("-" * len(text))
-        print()
+            cal_string = cal_string + text + '\n'
+            cal_string = cal_string + "-" * len(text)
+        cal_string = cal_string + "\n"
 
         # Here, let's add weekly specific items
         if whom == "nelle":
-            nelle_specific_stuff(day, date, month, year, language)
+            nelle_specific_stuff(day, date, month, year, language, cal_string)
         elif whom == "alex":
-            alex_specific_stuff(day, date, month, year, language)
-        print()
+            alex_specific_stuff(day, date, month, year, language, cal_string)
+        cal_string = cal_string + '\n'

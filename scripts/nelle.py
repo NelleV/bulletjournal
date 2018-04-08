@@ -1,13 +1,19 @@
 
 
-def nelle_specific_stuff(day, date, month, year):
+def nelle_specific_stuff(day, date, month, year, calendar_string):
     """
     Nelle's specific stuff
     """
     if day == "Thursday":
-        print("- BIDS lunch: 12.30pm to 2pm")
-        print("- Numpy meeting: 3pm to 3.30pm")
-        print("- Ben & Nelle meeting: 3.30pm to 4.30pm")
+        calendar_string = calendar_string + "- BIDS lunch: 12.30pm to 2pm\n"
+        calendar_string = calendar_string + "- Numpy meeting: 3pm to 3.30pm\n"
+        calendar_string = calendar_string + ("- Ben & Nelle meeting: 3.30pm to"
+                                             "4.30pm\n")
     if day == "Monday":
-        print("- Alex & Nelle meeting: 11.30am to 12.30pm")
-        print("- Elizabeth & Nelle meeting: 7am to 8am")
+        calendar_string = calendar_string + ("- Alex & Nelle meeting: 11.30am"
+                                             "to 12.30pm\n")
+        calendar_string = calendar_string + ("- Elizabeth & Nelle meeting: 7am"
+                                             "to 8am\n")
+
+    # give us back our string
+    return calendar_string
