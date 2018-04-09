@@ -38,9 +38,6 @@ if whom is not None and whom not in ["alex", "nelle"]:
 cal = calendar.TextCalendar()
 all_days = cal.monthdayscalendar(year, month)
 
-# initialize the calendar string
-cal_string = ""
-
 # account for language preference
 if language == "fr":
         days = fr_days
@@ -48,6 +45,17 @@ if language == "fr":
 else:
     days = en_days
     months = en_months
+
+# create title
+title_text = months[month] + " " + str(year)
+if not markdown:
+    title_string = title_text + '\n' + "-" * len(title_text)
+else:
+    title_string = ('# ' + title_text + "\n"
+                    "***\n")
+
+# initialize the calendar string
+cal_string = title_string
 
 # cycle through each day
 for dates in all_days:
@@ -63,7 +71,7 @@ for dates in all_days:
 
         # print the day header by our preferred format
         if markdown:
-            cal_string = cal_string + "# " + text
+            cal_string = cal_string + "## " + text
         else:
             cal_string = cal_string + text + '\n'
             cal_string = cal_string + "-" * len(text)

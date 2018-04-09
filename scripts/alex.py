@@ -10,6 +10,11 @@ def alex_daily_specific(day, date, month, year, calendar_string):
                     'Wednesday',
                     'Thursday']
 
+    # print header for at-work days
+    if day in at_work_days:
+        goal_subheader = ('### Primary foci: \n')
+        calendar_string = calendar_string + goal_subheader
+
     # print table formatting header
     table_header = ("| Project | Activity | Anticipated time | Total time |\n"
                     "|---------|----------|------------------|------------|\n")
@@ -57,6 +62,15 @@ def alex_daily_specific(day, date, month, year, calendar_string):
                                              ' |\n')
         calendar_string = calendar_string + ('| | BAD scrimmage | |'
                                              ' |\n')
+
+    # add a cumulative time
+    calendar_string = calendar_string + ('| ***All*** | -- | |'
+                                         ' |\n')
+
+    # if we're in a work day, allow for activity logs
+    if day in at_work_days:
+        log_footer = '\n ### Activity logs \n'
+        calendar_string = calendar_string + log_footer
 
     # add a horizontal line between days
     calendar_string = calendar_string + "\n***\n"
