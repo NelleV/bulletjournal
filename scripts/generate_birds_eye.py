@@ -45,7 +45,14 @@ else:
     months = en_months
 
 # create table formatting
-header_string = " ---- " + 70 * "-" + " "
+if not markdown:
+    header_string = " ---- " + 70 * "-" + " " + '\n'
+else:
+    header_string = ("| Day | Entry | \n"
+                     "|----|----| \n")
+
+# initialize calendar header
+calendar_string = calendar_string + header_string
 
 # cycle through individual daily entries
 for dates in all_days:
@@ -54,15 +61,24 @@ for dates in all_days:
             continue
 
         # format the day
-        calendar_string = calendar_string + header_string
         text = " {date} {day}".format(
             **{"day": day[0], "date": date})
-        if len(text) == 4:
-            text = text + " " + 70 * " " + " "
-        else:
-            text = text + " " + 70 * " " + " "
 
-        calendar_string = calendar_string + text
+        # update formatting for markdown vs RST
+        if not markdown:
+            if len(text) == 4:
+                text = text + " " + 70 * " " + " "
+            else:
+                text = text + " " + 70 * " " + " "
+
+        # update formatting for markdown vs RST
+        else:
+            if len(text) == 4:
+                text = "| " + text + " | " + 70 * " " + " |"
+            else:
+                text = "| " + text + " | " + 70 * " " + " |"
+
+        calendar_string = calendar_string + text + '\n'
 
 # print or save as desired
 if save is None:
