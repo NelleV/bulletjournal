@@ -10,15 +10,22 @@ def alex_daily_specific(day, date, month, year, calendar_string):
                     'Wednesday',
                     'Thursday']
 
-    # print header for at-work days
-    if day in at_work_days:
+    # specify all work days
+    all_work_days = at_work_days + ['Sunday']
+
+    # create header for work days
+    if day in all_work_days:
+
+        # add goal header
         goal_subheader = ('### Primary foci: \n')
         calendar_string = calendar_string + goal_subheader
 
-    # print table formatting header
-    table_header = ("| Project | Activity | Anticipated time | Total time |\n"
-                    "|---------|----------|------------------|------------|\n")
-    calendar_string = calendar_string + table_header
+        # print table formatting header
+        table_header = ("| Project | Activity | Anticipated time | Total time"
+                        " |\n"
+                        "|---------|----------|------------------|------------"
+                        "|\n")
+        calendar_string = calendar_string + table_header
 
     # print food and social
     if day in at_work_days:
@@ -32,7 +39,7 @@ def alex_daily_specific(day, date, month, year, calendar_string):
         calendar_string = calendar_string + ('| | Afternoon tea | 15 min |'
                                              ' |\n')
     # print accountability
-    if day in at_work_days:
+    if day in all_work_days:
         calendar_string = calendar_string + ('| **Accountability** | -- | |'
                                              ' |\n')
         calendar_string = calendar_string + ('| | Create to-do list | 15 min |'
@@ -64,11 +71,12 @@ def alex_daily_specific(day, date, month, year, calendar_string):
                                              ' |\n')
 
     # add a cumulative time
-    calendar_string = calendar_string + ('| ***All*** | -- | |'
-                                         ' |\n')
+    if day in all_work_days:
+        calendar_string = calendar_string + ('| ***All*** | -- | |'
+                                             ' |\n')
 
     # if we're in a work day, allow for activity logs
-    if day in at_work_days:
+    if day in all_work_days:
         log_footer = '\n ### Activity logs \n'
         calendar_string = calendar_string + log_footer
 
