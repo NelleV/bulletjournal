@@ -10,43 +10,56 @@ def alex_daily_specific(day, date, month, year, calendar_string):
                     'Wednesday',
                     'Thursday']
 
+    # print table formatting header
+    table_header = ("| Project | Activity | Anticipated time | Total time |\n"
+                    "|---------|----------|------------------|------------|\n")
+    calendar_string = calendar_string + table_header
+
     # print food and social
     if day in at_work_days:
-        calendar_string = calendar_string + '- **Food and social**\n'
-        calendar_string = calendar_string + '\t- Morning coffee (15 min)\n'
+        calendar_string = calendar_string + ('| **Food and social** | -- | |'
+                                             ' |\n')
+        calendar_string = calendar_string + ('| | Morning coffee | 15 min |'
+                                             ' |\n')
         if day != "Thursday":
-            calendar_string = calendar_string + "\t- Lunch (1 hour)\n"
-        calendar_string = calendar_string + '\t- Afternoon tea (15 min)\n'
-
+            calendar_string = calendar_string + ('| | Lunch | 1 hour |'
+                                                 ' |\n')
+        calendar_string = calendar_string + ('| | Afternoon tea | 15 min |'
+                                             ' |\n')
     # print accountability
     if day in at_work_days:
-        calendar_string = calendar_string + "- **Accountability**\n"
-        calendar_string = calendar_string + "\t- Create to-do list (15 min)\n"
-        calendar_string = calendar_string + "\t- Update to-do list (15 min)\n"
+        calendar_string = calendar_string + ('| **Accountability** | -- | |'
+                                             ' |\n')
+        calendar_string = calendar_string + ('| | Create to-do list | 15 min |'
+                                             ' |\n')
+        calendar_string = calendar_string + ('| | Update to-do list | 15 min |'
+                                             ' |\n')
 
     # print regular meetings
     if day in at_work_days:
-        calendar_string = calendar_string + '- **Meetings**\n'
+        calendar_string = calendar_string + '| **Meetings** | -- | | |\n'
         if day == "Monday":
-            calendar_string = calendar_string + ("\t - Weekly accountability "
+            calendar_string = calendar_string + ("| | Weekly accountability "
                                                  "meeting with Nelle Varoquaux"
-                                                 " (1 hour)\n")
+                                                 " | 1 hour | |\n")
         if day == "Wednesday":
-            calendar_string = calendar_string + ("\t- Weekly lab meeting (1 "
-                                                 "hour)\n")
-            calendar_string = calendar_string + ("\t- Weekly meeting with Tom"
-                                                 " Griffiths (30 min)\n")
+            calendar_string = calendar_string + ("| | Weekly lab meeting | 1 "
+                                                 "hour | |\n")
+            calendar_string = calendar_string + ("| | Weekly meeting with Tom"
+                                                 " Griffiths | 30 min | |\n")
         if day == "Thursday":
-            calendar_string = calendar_string + ("\t- BIDS Lunch (1 hour, 30 "
-                                                 "min)\n")
+            calendar_string = calendar_string + ("| | BIDS lunch | 1 hour, 30 "
+                                                 "min | |\n")
 
     # print personal things
     if day == "Thursday":
-        calendar_string = calendar_string + '- **Personal**\n'
-        calendar_string = calendar_string + "\t- 7pm: BAD scrimmage\n"
+        calendar_string = calendar_string + ('| **Personal** | -- | |'
+                                             ' |\n')
+        calendar_string = calendar_string + ('| | BAD scrimmage | |'
+                                             ' |\n')
 
     # add a horizontal line between days
-    calendar_string = calendar_string + "***\n"
+    calendar_string = calendar_string + "\n***\n"
 
     # give us back our string
     return calendar_string
