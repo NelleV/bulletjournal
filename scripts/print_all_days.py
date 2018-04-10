@@ -5,6 +5,7 @@ import argparse
 # import custom packages
 from en_calendar import en_months, en_days
 from fr_calendar import fr_months, fr_days
+from weekly_table_to_do import add_weekly_table
 
 # import specific people's info
 from nelle import nelle_daily_specific
@@ -72,10 +73,15 @@ for dates in all_days:
             weekly_to_do_title = ("Weekly to-do list for week of " +
                                   months[month] + " " + str(date) + ", " +
                                   str(year))
+
+            # if it's markdown, create a weekly table
             if markdown:
                 cal_string = (cal_string +
-                              '# ' + weekly_to_do_title +
-                              "\n\n***\n\n")
+                              '# ' + weekly_to_do_title + '\n\n')
+                cal_string = add_weekly_table(cal_string)
+                cal_string = cal_string + "***\n\n"
+
+            # if it's not markdown, just leave a space for the goals
             else:
                 cal_string = (cal_string +
                               '----\n\n' +
@@ -89,11 +95,10 @@ for dates in all_days:
 
         # print the day header by our preferred format
         if markdown:
-            cal_string = cal_string + "## " + text
+            cal_string = cal_string + "## " + text + "\n\n"
         else:
-            cal_string = cal_string + text + '\n'
-            cal_string = cal_string + "-" * len(text) + '\n'
-        cal_string = cal_string + "\n"
+            cal_string = (cal_string + text + '\n' +
+                          "-" * len(text) + '\n\n')
 
         # Here, let's add weekly specific items
         if whom == "nelle":
