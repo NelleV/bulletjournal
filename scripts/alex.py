@@ -17,7 +17,7 @@ def alex_daily_specific(day, date, month, year, calendar_string):
     if day in all_work_days:
 
         # add goal header
-        goal_subheader = ('### Primary foci: \n')
+        goal_subheader = ('### Primary foci: \n\n')
         calendar_string = calendar_string + goal_subheader
 
         # print table formatting header
