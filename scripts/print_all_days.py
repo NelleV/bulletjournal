@@ -40,8 +40,8 @@ all_days = cal.monthdayscalendar(year, month)
 
 # account for language preference
 if language == "fr":
-        days = fr_days
-        months = fr_months
+    days = fr_days
+    months = fr_months
 else:
     days = en_days
     months = en_months
@@ -49,7 +49,9 @@ else:
 # create title
 title_text = months[month] + " " + str(year)
 if not markdown:
-    title_string = title_text + '\n' + "-" * len(title_text)
+    title_string = (title_text + '\n' +
+                    "=" * len(title_text) +
+                    '\n\n-------\n\n')
 else:
     title_string = ('# ' + title_text +
                     "\n\n***\n\n")
@@ -65,6 +67,22 @@ for dates in all_days:
         if date == 0:
             continue
 
+        # add spaces for weekly to-do list
+        if day == fr_days[0] or day == en_days[0]:
+            weekly_to_do_title = ("Weekly to-do list for week of " +
+                                  months[month] + " " + str(date) + ", " +
+                                  str(year))
+            if markdown:
+                cal_string = (cal_string +
+                              '# ' + weekly_to_do_title +
+                              "\n\n***\n\n")
+            else:
+                cal_string = (cal_string +
+                              '----\n\n' +
+                              weekly_to_do_title + '\n' +
+                              "-" * len(weekly_to_do_title) +
+                              '\n\n----\n\n')
+
         # format the day
         text = "{day}, {month} {date}".format(
             **{"day": day, "month": months[month], "date": date})
@@ -74,7 +92,7 @@ for dates in all_days:
             cal_string = cal_string + "## " + text
         else:
             cal_string = cal_string + text + '\n'
-            cal_string = cal_string + "-" * len(text)
+            cal_string = cal_string + "-" * len(text) + '\n'
         cal_string = cal_string + "\n"
 
         # Here, let's add weekly specific items
