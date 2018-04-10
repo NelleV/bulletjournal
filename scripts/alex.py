@@ -77,7 +77,7 @@ def alex_daily_specific(day, date, month, year, calendar_string):
 
     # if we're in a work day, allow for activity logs
     if day in all_work_days:
-        log_footer = '\n ### Activity logs \n'
+        log_footer = '\n### Activity logs \n'
         calendar_string = calendar_string + log_footer
 
     # add a horizontal line between days

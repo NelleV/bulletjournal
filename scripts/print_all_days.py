@@ -51,8 +51,8 @@ title_text = months[month] + " " + str(year)
 if not markdown:
     title_string = title_text + '\n' + "-" * len(title_text)
 else:
-    title_string = ('# ' + title_text + "\n"
-                    "***\n")
+    title_string = ('# ' + title_text +
+                    "\n\n***\n\n")
 
 # initialize the calendar string
 cal_string = title_string
