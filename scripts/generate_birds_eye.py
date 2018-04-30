@@ -54,8 +54,8 @@ else:
 if not markdown:
     header_string = " ---- " + 70 * "-" + " " + '\n'
 else:
-    header_string = ("| Day | Entry | \n"
-                     "|----|----| \n")
+    header_string = ("|  Day  | Entry | \n"
+                     "|-------|-------| \n")
 
 # initialize calendar header
 calendar_string = title_string + header_string
@@ -67,8 +67,12 @@ for dates in all_days:
             continue
 
         # format the day
-        text = " {date} {day}".format(
-            **{"day": day[0], "date": date})
+        if date < 10:
+            text = "{date} {day}".format(
+                **{"day": day[0:2], "date": str(0)+str(date)})
+        else:
+            text = "{date} {day}".format(
+                **{"day": day[0:2], "date": date})
 
         # update formatting for markdown vs RST
         if not markdown:
@@ -79,10 +83,7 @@ for dates in all_days:
 
         # update formatting for markdown vs RST
         else:
-            if len(text) == 4:
-                text = "| " + text + " | " + 70 * " " + " |"
-            else:
-                text = "| " + text + " | " + 70 * " " + " |"
+            text = "| " + text + " |  |"
 
         calendar_string = calendar_string + text + '\n'
 
