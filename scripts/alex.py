@@ -80,6 +80,12 @@ def alex_daily_specific(day, date, month, year, calendar_string):
         log_footer = '\n### Activity logs \n'
         calendar_string = calendar_string + log_footer
 
+    # add a section for the grateful list
+    calendar_string = calendar_string + "\n### Today, I'm grateful for...\n"
+    calendar_string = calendar_string + "1. ...\n"
+    calendar_string = calendar_string + "1. ...\n"
+    calendar_string = calendar_string + "1. ...\n"
+
     # add a horizontal line between days
     calendar_string = calendar_string + "\n***\n"
 
