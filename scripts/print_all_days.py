@@ -78,7 +78,7 @@ for dates in all_days:
             if markdown:
                 cal_string = (cal_string +
                               '# ' + weekly_to_do_title + '\n\n')
-                cal_string = add_weekly_table(cal_string)
+                cal_string = add_weekly_table(cal_string, days)
                 cal_string = cal_string + "***\n\n"
 
             # if it's not markdown, just leave a space for the goals
@@ -105,7 +105,10 @@ for dates in all_days:
             cal_string = nelle_daily_specific(day, date, month, year,
                                               cal_string)
         elif whom == "alex":
-            cal_string = alex_daily_specific(day, date, month, year,
+            cal_string = alex_daily_specific(day,
+                                             date,
+                                             months[month],
+                                             year,
                                              cal_string)
         cal_string = cal_string + '\n'
 
