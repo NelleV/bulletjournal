@@ -46,13 +46,13 @@ else:
 # create title
 title_text = months[month] + " " + str(year)
 if not markdown:
-    title_string = title_text + '\n' + "-" * len(title_text)
+    title_string = title_text + '\n' + "-" * len(title_text) + "\n\n"
 else:
     title_string = '# ' + title_text + "\n"
 
 # create table formatting
 if not markdown:
-    header_string = " ---- " + 70 * "-" + " " + '\n'
+    header_string = "------ " + 70 * "-" + " " + '\n'
 else:
     header_string = ("|  Day  | Entry | \n"
                      "|-------|-------| \n")
