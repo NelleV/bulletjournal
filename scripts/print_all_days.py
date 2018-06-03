@@ -86,7 +86,7 @@ for dates in all_days:
                 cal_string = (cal_string +
                               '----\n\n' +
                               weekly_to_do_title + '\n' +
-                              "-" * len(weekly_to_do_title) +
+                              "=" * len(weekly_to_do_title) +
                               '\n\n----\n\n')
 
         # format the day
