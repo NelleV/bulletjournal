@@ -52,7 +52,7 @@ else:
 
 # create table formatting
 if not markdown:
-    header_string = "------ " + 70 * "-" + " " + '\n'
+    header_string = "+-------+" + 70 * "-" + "+" + '\n'
 else:
     header_string = ("|  Day  | Entry | \n"
                      "|-------|-------| \n")
@@ -76,16 +76,15 @@ for dates in all_days:
 
         # update formatting for markdown vs RST
         if not markdown:
-            if len(text) == 4:
-                text = text + " " + 70 * " " + " "
-            else:
-                text = text + " " + 70 * " " + " "
+            text = "| " + text + " |" + 70 * " " + "|"
 
         # update formatting for markdown vs RST
         else:
             text = "| " + text + " |  |"
 
         calendar_string = calendar_string + text + '\n'
+        if not markdown:
+            calendar_string = calendar_string + header_string
 
 # print or save as desired
 if save is None:
