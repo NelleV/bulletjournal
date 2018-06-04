@@ -10,6 +10,7 @@ from weekly_table_to_do import add_weekly_table
 # import specific people's info
 from nelle import nelle_daily_specific
 from alex import alex_daily_specific
+from alex import alex_daily_simplified
 
 # initialize the parser
 parser = argparse.ArgumentParser()
@@ -21,6 +22,7 @@ parser.add_argument("--markdown", default=False, action="store_true")
 parser.add_argument("--whom", default=None)
 parser.add_argument("--language", default="en")
 parser.add_argument("--save", default=None)  # path name to save
+parser.add_argument("--simplified", default=None)  # allow simplified tracking
 args = parser.parse_args()
 
 # add arguments to namespace
@@ -30,6 +32,7 @@ markdown = args.markdown
 whom = args.whom
 language = args.language
 save = args.save
+simplified = args.simplified
 
 # yell at us if we don't provide a valid name
 if whom is not None and whom not in ["alex", "nelle"]:
@@ -78,7 +81,9 @@ for dates in all_days:
             if markdown:
                 cal_string = (cal_string +
                               '# ' + weekly_to_do_title + '\n\n')
-                cal_string = add_weekly_table(cal_string, days)
+                cal_string = add_weekly_table(cal_string,
+                                              days,
+                                              simplified)
                 cal_string = cal_string + "***\n\n"
 
             # if it's not markdown, just leave a space for the goals
@@ -100,16 +105,23 @@ for dates in all_days:
             cal_string = (cal_string + text + '\n' +
                           "-" * len(text) + '\n\n')
 
-        # Here, let's add weekly specific items
+        # let's add weekly specific items
         if whom == "nelle":
             cal_string = nelle_daily_specific(day, date, month, year,
                                               cal_string)
         elif whom == "alex":
-            cal_string = alex_daily_specific(day,
-                                             date,
-                                             months[month],
-                                             year,
-                                             cal_string)
+            if simplified:
+                cal_string = alex_daily_simplified(day,
+                                                   date,
+                                                   months[month],
+                                                   year,
+                                                   cal_string)
+            else:
+                cal_string = alex_daily_specific(day,
+                                                 date,
+                                                 months[month],
+                                                 year,
+                                                 cal_string)
         cal_string = cal_string + '\n'
 
 # print or save as desired

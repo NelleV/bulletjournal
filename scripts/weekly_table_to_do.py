@@ -1,4 +1,4 @@
-def add_weekly_table(calendar_string, days):
+def add_weekly_table(calendar_string, days, simplified):
 
     # create headers
     two_week_goal_header = '## Two-week goal: \n'
@@ -11,13 +11,27 @@ def add_weekly_table(calendar_string, days):
     weekly_overview_header = ('\n## Overview of things I need to do ' +
                               'this week\n')
     weekly_overview = ''
-    for day in days:
-        weekly_overview = weekly_overview + '- **' + day + '** ( hours)\n'
 
-    # create breakdown by project
-    breakdown_header = '\n## Breakdown by project\n'
-    breakdown_table = ('| Project | Day | Time |\n' +
-                       '| ------- | --- | ---- |\n')
+    # if simplified, only track the items
+    if simplified:
+        for day in days:
+            weekly_overview = weekly_overview + '- **' + day + '**\n'
+
+    # otherwise, also track hours
+    else:
+        for day in days:
+            weekly_overview = weekly_overview + '- **' + day + '** ( hours)\n'
+
+    # if simplified, skip project time breakdown
+    if simplified:
+        breakdown_table = ""
+        breakdown_header = ""
+
+    # otherwise, track project time by day
+    else:
+        breakdown_header = '\n## Breakdown by project\n'
+        breakdown_table = ('| Project | Day | Time |\n' +
+                           '| ------- | --- | ---- |\n')
 
     # create scratchpad for things I need to do
     scratchpad_header = '\n## Other things I need to do\n\n'
