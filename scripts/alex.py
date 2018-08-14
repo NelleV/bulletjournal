@@ -11,6 +11,11 @@ def alex_daily_specific(day, date, month, year, calendar_string):
                     'Thursday',
                     'Friday']
 
+    # specify teaching days
+    teaching_days = ['Monday',
+                     'Wednesday']
+    office_hour_days = ['Monday']
+
     # specify all work days
     all_work_days = at_work_days
 
@@ -35,7 +40,7 @@ def alex_daily_specific(day, date, month, year, calendar_string):
                                              ' |\n')
         calendar_string = calendar_string + ('| | Morning coffee | 15 min |'
                                              ' |\n')
-        calendar_string = calendar_string + ('| | Lunch | 1 hour |'
+        calendar_string = calendar_string + ('| | Lunch | 1 hr |'
                                              ' |\n')
         calendar_string = calendar_string + ('| | Afternoon tea | 15 min |'
                                              ' |\n')
@@ -54,7 +59,18 @@ def alex_daily_specific(day, date, month, year, calendar_string):
         if day == "Monday":
             calendar_string = calendar_string + ("| | Weekly accountability "
                                                  "meeting with Nelle Varoquaux"
-                                                 " | 1 hour | |\n")
+                                                 " | 1 hr | |\n")
+
+    # print teaching and office hours
+    if day in teaching_days:
+        calendar_string = calendar_string + '| **Teaching** | -- | | |\n'
+        calendar_string = calendar_string + '| | Class | 1 hr | |\n'
+    if day in office_hour_days:
+        if day in teaching_days:
+            calendar_string = calendar_string + '| | OH | 1 hr | |\n'
+        else:
+            calendar_string = calendar_string + '| **Teaching** | -- | | |\n'
+            calendar_string = calendar_string + '| | OH | 1 hr | |\n'            
 
     # print personal things
     if day == "Tuesday":
