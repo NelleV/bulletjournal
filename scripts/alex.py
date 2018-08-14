@@ -35,9 +35,8 @@ def alex_daily_specific(day, date, month, year, calendar_string):
                                              ' |\n')
         calendar_string = calendar_string + ('| | Morning coffee | 15 min |'
                                              ' |\n')
-        if day != "Thursday":
-            calendar_string = calendar_string + ('| | Lunch | 1 hour |'
-                                                 ' |\n')
+        calendar_string = calendar_string + ('| | Lunch | 1 hour |'
+                                             ' |\n')
         calendar_string = calendar_string + ('| | Afternoon tea | 15 min |'
                                              ' |\n')
     # print accountability
@@ -56,12 +55,9 @@ def alex_daily_specific(day, date, month, year, calendar_string):
             calendar_string = calendar_string + ("| | Weekly accountability "
                                                  "meeting with Nelle Varoquaux"
                                                  " | 1 hour | |\n")
-        if day == "Wednesday":
-            calendar_string = calendar_string + ("| | Weekly meeting with "
-                                                 "Tom Griffiths"
-                                                 " | 1 hour | |\n")
+
     # print personal things
-    if day == "Thursday":
+    if day == "Tuesday":
         calendar_string = calendar_string + ('| **Personal** | -- | |'
                                              ' |\n')
 
@@ -130,10 +126,6 @@ def alex_daily_simplified(day, date, month, year, calendar_string):
             calendar_string = calendar_string + ("| **Meetings** "
                                                  "| Weekly meeting with "
                                                  "Nelle Varoquaux |  |\n")
-        if day == "Wednesday":
-            calendar_string = calendar_string + ("| **Meetings** "
-                                                 "| Weekly meeting with "
-                                                 "Tom Griffiths |  |\n")
 
     # add a cumulative time
     if day in all_work_days:
